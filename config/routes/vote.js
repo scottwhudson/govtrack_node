@@ -1,8 +1,8 @@
-var PersonModel = require('../models/person')
+var Vote = require('../../models/vote')
 
 module.exports = [
   { method: 'GET',
-    path:'/person',
+    path:'/vote',
     handler: function (request, reply) {
       PersonModel.find({}, function (error, data) {
         if (error) {
@@ -13,20 +13,15 @@ module.exports = [
             });
         } else {
             reply({
-                statusCode: 200,
-                message: 'User Data Successfully Fetched',
-                data: data
+                meta: {
+                    limit: data.length,
+                    offset: 0,
+                    total_count: data.length
+                },
+                objects: data
             });
         }
       });
-    }
-  },
-
-  {
-    method: 'GET',
-    path: '/bill',
-    handler: function (request, reply) {
-        return reply('bar');
     }
   }
 ]

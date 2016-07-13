@@ -2,7 +2,7 @@
 
 const Hapi = require('hapi');
 const server = new Hapi.Server();
-const routes = require('./routes');
+const routes = require('./config/routes');
 
 server.connection({
     host: 'localhost',
