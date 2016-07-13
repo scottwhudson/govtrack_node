@@ -1,7 +1,7 @@
 {
   "name": "govtrack-node",
   "version": "0.0.1",
-  "main": "app.js",
+  "main": "server.js",
   "dependencies": {
     "good-console": "^6.1.2",
     "hapi": "^13.5.0",
