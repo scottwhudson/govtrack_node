@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var RoleSchema = mongoose.Schema({
+var RoleSchema = Schema({
     caucus: String,
     congress_numbers: Array,
     current: Boolean,
@@ -14,7 +14,7 @@ var RoleSchema = mongoose.Schema({
     id: Number, //primary key
     leadership_title: String,
     party: String,
-    person: Object,
+    person: [{ type: Schema.Types.ObjectId, ref: 'Person' }],
     phone: String,
     role_type: String,
     senator_class: String,

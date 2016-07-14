@@ -3,10 +3,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var CommitteeMemberSchema = mongoose.Schema({
-    committee: Array,
+var CommitteeMemberSchema = Schema({
+    committee: [{ type: Schema.Types.ObjectId, ref: 'Committee' }],
     id: Number,
-    person: Array,
+    person: [{ type: Schema.Types.ObjectId, ref: 'Person' }],
     role: String
 });
 

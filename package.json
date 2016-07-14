@@ -3,10 +3,11 @@
   "version": "0.0.1",
   "main": "server.js",
   "dependencies": {
-    "good-console": "^6.1.2",
     "hapi": "^13.5.0",
     "joi": "^9.0.0",
-    "mongoose": "^4.5.4"
+    "mongoose": "^4.5.4",
+    "mysql": "^2.11.1",
+    "sequelize": "^4.0.0-0"
   },
   "description": "A simple implementation of the GovTrack API in Node and Hapi",
   "scripts": {

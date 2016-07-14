@@ -3,19 +3,19 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var BillSchema = mongoose.Schema({
+var BillSchema = Schema({
     bill_resolution_type: String,
     bill_type: String,
-    committees: Array,
+    committees: [{ type: Schema.Types.ObjectId, ref: 'Committee' }],
     congress: Number,
-    cosponsors: Array,
+    cosponsors: [{ type: Schema.Types.ObjectId, ref: 'Person' }],
     current_status: String,
     current_status_date: Date,
     current_status_description: String,
     current_status_label: String,
     display_number: String,
     docs_house_gov_postdate: Date,
-    id: Number,
+    id: Number, //primary key
     introduced_date: Date,
     is_alive: Boolean,
     is_current: Boolean,
@@ -24,14 +24,13 @@ var BillSchema = mongoose.Schema({
     major_actions: Array,
     noun: String,
     number: Number,
-    related_bills: Array,
     senate_floor_schedule_postdate: Date,
     sliplawnum: String,
     sliplawpubpriv: String,
     source: String,
     source_link: String,
-    sponsor: Object, // PersonModel
-    sponsor_role: Object, // RoleModel
+    sponsor: [{ type: Schema.Types.ObjectId, ref: 'Person' }],
+    sponsor_role: [{ type: Schema.Types.ObjectId, ref: 'Role' }],
     terms: Array,
     title: String,
     title_without_number: String,

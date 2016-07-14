@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var CosponsorshipSchema = mongoose.Schema({
+var CosponsorshipSchema = Schema({
     bill: Number,
     id: Number,
     joined: Date,

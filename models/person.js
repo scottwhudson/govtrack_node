@@ -3,10 +3,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var PersonSchema = mongoose.Schema({
+var PersonSchema = Schema({
     bioguideid: Number,
     birthday: Date,
-    committeeassignments: Array, // array of committees
+    committeeassignments: [{ type: Schema.Types.ObjectId, ref: 'Committee' }],
     cspanid: Number,
     firstname: String,
     gender: String,
@@ -19,7 +19,7 @@ var PersonSchema = mongoose.Schema({
     nickname: String,
     osid: String,
     pvsid: Number,
-    roles: Array, // array of roles
+    roles: [{ type: Schema.Types.ObjectId, ref: 'Role' }], // array of roles
     sortname: String,
     twitterid: String,
     youtubeid: String

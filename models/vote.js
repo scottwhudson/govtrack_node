@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var VoteSchema = mongoose.Schema({
+var VoteSchema = Schema({
     category: String,
     category_label: String,
     chamber: String,
@@ -19,7 +19,7 @@ var VoteSchema = mongoose.Schema({
     question: String,
     question_details: String,
     related_amendment: Number,
-    related_bill: Object, //bill
+    related_bill: [{ type: Schema.Types.ObjectId, ref: 'Bill' }], //bill
     required: Number,
     result: String,
     session: String,

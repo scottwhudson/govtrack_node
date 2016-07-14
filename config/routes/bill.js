@@ -24,4 +24,12 @@ module.exports = [
       });
     }
   }
+
+  // { method: 'GET',
+  //   path: '/bill/{id}'
+  //   handler: function (request, reply) {
+  //
+  //   }
+  //
+  // }
 ]

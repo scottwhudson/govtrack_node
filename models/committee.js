@@ -1,12 +1,12 @@
 'use strict';
 
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 
-var CommitteeSchema = mongoose.Schema({
+var CommitteeSchema = Schema({
     abbrev: String,
     code: String,
-    committee: Array,
+    committee: [{ type: Schema.Types.ObjectId, ref: 'Committee' }],
     committee_type: String,
     committee_type_label: String,
     id: Number,
