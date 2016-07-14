@@ -1,4 +1,4 @@
-var Committee = require('../../models/committee')
+var Committee = require('../../models/committee');
 
 module.exports = [
   { method: 'GET',
@@ -23,5 +23,23 @@ module.exports = [
         }
       });
     }
+  },
+
+  { method: 'GET',
+    path: '/committee/{id}',
+    handler: function(request, reply) {
+      Committee.find(request.params, function (error, data) {
+        if (error) {
+          reply({
+            statusCode: 503,
+            message: 'Failed to get data',
+            data: error
+          });
+        } else {
+          reply(data[0]);
+        }
+      });
+    }
+
   }
-]
+];

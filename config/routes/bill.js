@@ -1,4 +1,4 @@
-var Bill = require('../../models/bill')
+var Bill = require('../../models/bill');
 
 module.exports = [
   { method: 'GET',
@@ -28,7 +28,17 @@ module.exports = [
   { method: 'GET',
     path: '/bill/{id}',
     handler: function (request, reply) {
-      console.log(request.params);
+      Bill.find(request.params, function (error, data) {
+        if (error) {
+          reply({
+            statusCode: 503,
+            message: 'Failed to get data',
+            data: error
+          });
+        } else {
+          reply(data[0]);
+        }
+      });
     }
   }
-]
+];

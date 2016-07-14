@@ -1,4 +1,4 @@
-var Vote = require('../../models/vote')
+var Vote = require('../../models/vote');
 
 module.exports = [
   { method: 'GET',
@@ -23,5 +23,22 @@ module.exports = [
         }
       });
     }
+  },
+
+  { method: 'GET',
+    path: '/vote/{id}',
+    handler: function (request, reply) {
+      Vote.find(request.params, function (error, data) {
+        if (error) {
+          reply({
+            statusCode: 503,
+            message: 'Failed to get data',
+            data: error
+          });
+        } else {
+          reply(data[0]);
+        }
+      });
+    }
   }
-]
+];

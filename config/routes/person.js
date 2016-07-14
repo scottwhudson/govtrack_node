@@ -1,4 +1,4 @@
-var Person = require('../../models/person')
+var Person = require('../../models/person');
 
 module.exports = [
   { method: 'GET',
@@ -23,5 +23,22 @@ module.exports = [
         }
       });
     }
+  },
+
+  { method: 'GET',
+    path: '/person/{id}',
+    handler: function (request, reply) {
+      Person.find(request.params, function (error, data) {
+        if (error) {
+          reply({
+            statusCode: 503,
+            message: 'Failed to get data',
+            data: error
+          });
+        } else {
+          reply(data[0]);
+        }
+      });
+    }
   }
-]
+];
