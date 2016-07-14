@@ -4,22 +4,22 @@ module.exports = [
   { method: 'GET',
     path:'/committee_member',
     handler: function (request, reply) {
-      CommitteeMember.find({}, function (error, data) {
+      CommitteeMember.find(request.url.query, function (error, data) {
         if (error) {
-            reply({
-                statusCode: 503,
-                message: 'Failed to get data',
-                data: error
-            });
+          reply({
+            statusCode: 503,
+            message: 'Failed to get data',
+            data: error
+          });
         } else {
-            reply({
-                meta: {
-                    limit: data.length,
-                    offset: 0,
-                    total_count: data.length
-                },
-                objects: data
-            });
+          reply({
+            meta: {
+              limit: data.length,
+              offset: 0,
+              total_count: data.length
+            },
+            objects: data
+          });
         }
       });
     }
