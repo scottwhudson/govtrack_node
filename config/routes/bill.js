@@ -4,6 +4,8 @@ module.exports = [
   { method: 'GET',
     path:'/bill',
     handler: function (request, reply) {
+      console.log(request.url.query);
+
       Bill.find({}, function (error, data) {
         if (error) {
             reply({
@@ -23,13 +25,12 @@ module.exports = [
         }
       });
     }
-  }
+  },
 
-  // { method: 'GET',
-  //   path: '/bill/{id}'
-  //   handler: function (request, reply) {
-  //
-  //   }
-  //
-  // }
+  { method: 'GET',
+    path: '/bill/{id}',
+    handler: function (request, reply) {
+      console.log(request.params);
+    }
+  }
 ]

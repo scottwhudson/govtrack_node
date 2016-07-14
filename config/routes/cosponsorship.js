@@ -4,22 +4,22 @@ module.exports = [
   { method: 'GET',
     path:'/cosponsorship',
     handler: function (request, reply) {
-      Cosponsorship.find({}, function (error, data) {
+      Cosponsorship.find(request.url.query, function (error, data) {
         if (error) {
-            reply({
-                statusCode: 503,
-                message: 'Failed to get data',
-                data: error
-            });
+          reply({
+            statusCode: 503,
+            message: 'Failed to get data',
+            data: error
+          });
         } else {
-            reply({
-                meta: {
-                    limit: data.length,
-                    offset: 0,
-                    total_count: data.length
-                },
-                objects: data
-            });
+          reply({
+            meta: {
+              limit: data.length,
+              offset: 0,
+              total_count: data.length
+            },
+            objects: data
+          });
         }
       });
     }

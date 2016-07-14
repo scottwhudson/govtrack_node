@@ -4,6 +4,7 @@
   "main": "server.js",
   "dependencies": {
     "hapi": "^13.5.0",
+    "hapi-to": "^1.0.0",
     "joi": "^9.0.0",
     "mongoose": "^4.5.4",
     "mysql": "^2.11.1",
