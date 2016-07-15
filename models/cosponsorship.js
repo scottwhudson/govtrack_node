@@ -1,9 +1,9 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var CosponsorshipSchema = Schema({
+const CosponsorshipSchema = Schema({
     bill: Number,
     id: Number,
     joined: Date,
@@ -13,8 +13,8 @@ var CosponsorshipSchema = Schema({
 });
 
 CosponsorshipSchema.methods.joiValidate = function(obj) {
-    var Joi = require('joi');
-    var schema = {
+    const Joi = require('joi');
+    const schema = {
       bill: Joi.number().integer().required(),
       id: Joi.number().integer().required(),
       joined: Joi.date(),

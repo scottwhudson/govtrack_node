@@ -1,4 +1,6 @@
-var Committee = require('../../models/committee');
+'use strict';
+
+const Committee = require('../../models/committee');
 
 module.exports = [
   { method: 'GET',
@@ -40,6 +42,5 @@ module.exports = [
         }
       });
     }
-
   }
 ];

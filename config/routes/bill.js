@@ -1,16 +1,17 @@
-var Bill = require('../../models/bill');
+'use strict';
+
+const Bill = require('../../models/bill');
+const Boom = require('boom');
 
 module.exports = [
   { method: 'GET',
     path:'/bill',
     handler: function (request, reply) {
       Bill.find(request.url.query, function (error, data) {
-        if (error) {
-          reply({
-            statusCode: 503,
-            message: 'Failed to get data',
-            data: error
-          });
+        if (error || data.length === 0) {
+          reply(
+            Boom.notFound('missing')
+          );
         } else {
           reply({
             meta: {
@@ -30,11 +31,7 @@ module.exports = [
     handler: function (request, reply) {
       Bill.find(request.params, function (error, data) {
         if (error) {
-          reply({
-            statusCode: 503,
-            message: 'Failed to get data',
-            data: error
-          });
+          reply(Boom.notFound('missing'));
         } else {
           reply(data[0]);
         }

@@ -1,11 +1,13 @@
-var bill = require('./routes/bill')
-    committeeMember = require('./routes/committee_member')
-    committee = require('./routes/committee')
-    cosponsorship = require('./routes/cosponsorship')
-    person = require('./routes/person')
-    role = require('./routes/role')
-    voteVoter = require('./routes/vote_voter')
-    vote = require('./routes/vote')
+'use strict';
+
+const bill = require('./routes/bill')
+const committeeMember = require('./routes/committee_member')
+const committee = require('./routes/committee')
+const cosponsorship = require('./routes/cosponsorship')
+const person = require('./routes/person')
+const role = require('./routes/role')
+const voteVoter = require('./routes/vote_voter')
+const vote = require('./routes/vote')
 
 module.exports = [].concat( bill, committeeMember, committee,
                             cosponsorship, person, role,

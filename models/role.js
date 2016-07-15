@@ -1,9 +1,9 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var RoleSchema = Schema({
+const RoleSchema = Schema({
     caucus: String,
     congress_numbers: Array,
     current: Boolean,

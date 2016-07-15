@@ -1,4 +1,7 @@
-var CommitteeMember = require('../../models/committee_member');
+'use strict';
+
+const CommitteeMember = require('../../models/committee_member');
+const Boom = require('boom');
 
 module.exports = [
   { method: 'GET',
@@ -6,11 +9,9 @@ module.exports = [
     handler: function (request, reply) {
       CommitteeMember.find(request.url.query, function (error, data) {
         if (error) {
-          reply({
-            statusCode: 503,
-            message: 'Failed to get data',
-            data: error
-          });
+          reply(
+            Boom.notFound('missing')
+          );
         } else {
           reply({
             meta: {
@@ -30,11 +31,9 @@ module.exports = [
     handler: function(request, reply) {
       CommitteeMember.find(request.params, function(error, data) {
         if (error) {
-          reply({
-            statusCode: 503,
-            message: 'Failed to get data',
-            data: error
-          });
+          reply(
+            Boom.notFound('missing')
+          );
         } else {
           reply(data[0]);
         }

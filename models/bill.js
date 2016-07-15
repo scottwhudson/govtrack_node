@@ -1,9 +1,9 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var BillSchema = Schema({
+const BillSchema = Schema({
     bill_resolution_type: String,
     bill_type: String,
     committees: [{ type: Schema.Types.ObjectId, ref: 'Committee' }],

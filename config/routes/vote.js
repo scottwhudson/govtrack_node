@@ -1,4 +1,6 @@
-var Vote = require('../../models/vote');
+'use strict';
+
+const Vote = require('../../models/vote');
 
 module.exports = [
   { method: 'GET',
