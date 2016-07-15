@@ -15,4 +15,4 @@ const VoteVoterSchema = Schema({
     voteview_extra_code: String
 });
 
-module.exports = mongoose.model('VoteVoter', VoteVoterSchema, 'votevoter');
+module.exports = mongoose.model('VoteVoter', VoteVoterSchema, 'vote_voter');

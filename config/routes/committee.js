@@ -1,46 +1,20 @@
 'use strict';
 
 const Committee = require('../../models/committee');
+const Response = require('./responses');
 
 module.exports = [
   { method: 'GET',
     path:'/committee',
     handler: function (request, reply) {
-      Committee.find(request.url.query, function (error, data) {
-        if (error) {
-          reply({
-            statusCode: 503,
-            message: 'Failed to get data',
-            data: error
-          });
-        } else {
-          reply({
-            meta: {
-              limit: data.length,
-              offset: 0,
-              total_count: data.length
-            },
-            objects: data
-          });
-        }
-      });
+      Response.indexAction(Committee, request, reply);
     }
   },
 
   { method: 'GET',
     path: '/committee/{id}',
     handler: function(request, reply) {
-      Committee.find(request.params, function (error, data) {
-        if (error) {
-          reply({
-            statusCode: 503,
-            message: 'Failed to get data',
-            data: error
-          });
-        } else {
-          reply(data[0]);
-        }
-      });
+      Response.indexAction(Committee, request, reply);
     }
   }
 ];

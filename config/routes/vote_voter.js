@@ -1,46 +1,20 @@
 'use strict';
 
 const VoteVoter = require('../../models/vote_voter');
-const Boom = require('boom');
+const Response = require('./responses');
 
 module.exports = [
   { method: 'GET',
     path:'/vote_voter',
     handler: function (request, reply) {
-
-      VoteVoter.find(request.url.query, function (error, data) {
-
-        if (error) {
-          reply(
-            Boom.notFound('missing')
-          );
-        } else {
-          reply({
-            meta: {
-
-              limit: data.length,
-              offset: 0,
-              total_count: data.length
-            },
-            objects: data
-          });
-        }
-      });
+      Response.indexAction(VoteVoter, request, reply);
     }
   },
 
   { method: 'GET',
     path: '/vote_voter/{id}',
     handler: function (request, reply) {
-      VoteVoter.find(request.params, function (error, data) {
-        if (error) {
-          reply(
-            Boom.notFound('missing')
-          );
-        } else {
-          reply(data[0]);
-        }
-      });
+      Response.showAction(VoteVoter, request, reply);
     }
   }
 ];

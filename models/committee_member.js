@@ -10,4 +10,4 @@ const CommitteeMemberSchema = Schema({
     role: String
 });
 
-module.exports = mongoose.model('CommitteeMember', CommitteeMemberSchema, 'committeemember');
+module.exports = mongoose.model('CommitteeMember', CommitteeMemberSchema, 'committee_member');
