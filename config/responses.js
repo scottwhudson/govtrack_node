@@ -4,6 +4,9 @@ const Boom = require('boom');
 
 module.exports = {
 
+  // fetch all records for given class, with optional
+  // filtering params
+  //
   indexAction: function (klass, request, reply) {
 
     const query = request.url.query;
@@ -11,7 +14,7 @@ module.exports = {
     klass.find(query, function (error, data) {
       if (error || data.length === 0) {
         reply(
-          Boom.notFound('missing')
+          Boom.notFound('missing');
         );
       } else {
         reply({
@@ -24,9 +27,10 @@ module.exports = {
         });
       }
     });
-
   },
 
+  // fetch single record matching specified ID
+  //
   showAction: function (klass, request, reply) {
     klass.find(request.params, function (error, data) {
       if (error) {

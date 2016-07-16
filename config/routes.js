@@ -11,6 +11,7 @@ const VoteVoter = require('../models/vote_voter');
 const Vote = require('../models/vote');
 
 module.exports = [
+
   { method: 'GET',
     path:'/bill',
     handler: function (request, reply) {
