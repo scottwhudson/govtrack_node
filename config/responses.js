@@ -9,24 +9,22 @@ module.exports = {
 
   // fetch all records for given class, with optional
   // filtering params
-  //
   indexAction: function (klass, request, reply) {
-    queryDatastore(klass, request, reply, REQ_LIMIT);
+    _queryDatastore(klass, request, reply, REQ_LIMIT);
   },
 
   // fetch single record matching specified ID
-  //
   showAction: function (klass, request, reply) {
-    queryDatastore(klass, request, reply, 1);
+    _queryDatastore(klass, request, reply, 1);
   }
 };
 
-const queryDatastore = function (klass, request, reply, limit) {
+const _queryDatastore = function (klass, request, reply, limit) {
 
-  var params = request.url.query;
-  var fields = '';
-  var order_by = '';
-  var queryLimit = limit;
+  let params = request.url.query;
+  let fields = '';
+  let order_by = '';
+  let queryLimit = limit;
 
   if (Object.keys(params).length > 0) {
     if (Object.prototype.hasOwnProperty.call(params, 'fields')) {
@@ -50,8 +48,8 @@ const queryDatastore = function (klass, request, reply, limit) {
     limit(queryLimit).
     sort(order_by).
     select(fields).
-    exec(function (error, data) {
-      if (error || data.length === 0) {
+    exec(function (err, data) {
+      if (err || data.length === 0) {
         reply(Boom.notFound('missing'));
       } else {
         reply({

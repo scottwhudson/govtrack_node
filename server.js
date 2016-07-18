@@ -4,6 +4,7 @@ const Hapi = require('hapi');
 const server = new Hapi.Server();
 const routes = require('./config/routes');
 
+// server config
 server.connection({
     host: 'localhost',
     port: 8000
@@ -11,9 +12,11 @@ server.connection({
 
 server.route(routes);
 
+
 // database config
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/govtrack');
+
 
 // server start
 server.start((err) => {
