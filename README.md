@@ -15,16 +15,34 @@ The replica supports all 8 endpoints specified in the original API:
 
 -  [`/bill`](https://www.govtrack.us/developers/api#endpoint_bill)
 
-- [`/committee_member`]()
+- [`/committee_member`](https://www.govtrack.us/developers/api#endpoint_committee_member)
 
-- [`/committee`]()
+- [`/committee`](https://www.govtrack.us/developers/api#endpoint_committee)
 
 - [`/cosponsorship`](https://www.govtrack.us/developers/api#endpoint_cosponsorship)
 
 - [`/person`](https://www.govtrack.us/developers/api#endpoint_person)
 
-- [`/role`]()
+- [`/role`](https://www.govtrack.us/developers/api#endpoint_role)
 
-- [`/vote_voter`]()
+- [`/vote_voter`](https://www.govtrack.us/developers/api#endpoint_vote_voter)
 
-- [`/vote`]()
+- [`/vote`](https://www.govtrack.us/developers/api#endpoint_vote)
+
+#### Query Examples
+
+- Query by object id: `/person/400782`
+
+- Query by object properties: `/person?gender=female`
+
+- Modify the results limit: `/person?limit=500`
+
+- Order by object properties: `/person?order_by=birthday`
+
+- Return only specified properties: `/person?fields=name,birthday`
+
+### Todos
+* Improve error responses to more accurately reflect query failures
+* Add testing
+* Add CSV and XML support
+* Implement full text search feature
