@@ -3,7 +3,7 @@
 const Boom = require('boom');
 
 // Default number of records returned if no limit is specified
-const API_LIMIT = 100;
+const REQ_LIMIT = 100;
 
 module.exports = {
 
@@ -11,7 +11,7 @@ module.exports = {
   // filtering params
   //
   indexAction: function (klass, request, reply) {
-    queryDatastore(klass, request, reply, API_LIMIT);
+    queryDatastore(klass, request, reply, REQ_LIMIT);
   },
 
   // fetch single record matching specified ID
@@ -51,21 +51,7 @@ const queryDatastore = function (klass, request, reply, limit) {
     sort(order_by).
     select(fields).
     exec(function (error, data) {
-      console.log('QUERY LOG');
-      console.log('class');
-      console.log(klass);
-      console.log('params');
-      console.log(params);
-      console.log('fields');
-      console.log(fields);
-      console.log('limit');
-      console.log(queryLimit);
-      console.log('records retrieved');
-      console.log(data.length);
-      console.log('error');
-      console.log(error);
-
-      if (data.length === 0) {
+      if (error || data.length === 0) {
         reply(Boom.notFound('missing'));
       } else {
         reply({
