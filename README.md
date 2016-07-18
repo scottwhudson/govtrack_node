@@ -1,5 +1,5 @@
 # [GovTrack API](https://www.govtrack.us/) Replica
-Replica of GovTrack's open data JSON API built with Node, Hapi, and Mongo.  The included archive file is a partial dataset with up to 1k records of each type.
+Replica of GovTrack's open Government data JSON API built with Node, Hapi, and Mongo.  The included archive file is a partial dataset with up to 1k records of each type.
 
 ### Installation & Usage
 1. Install Node and MongoDB if you do not already have them & `git clone` the repository.
@@ -42,7 +42,7 @@ The replica supports all 8 endpoints specified in the original API:
 - Return only specified properties: `/person?fields=name,birthday`
 
 ### Todos
-* Improve error responses to more accurately reflect query failures
+* Improve query failure errors to be more specific
 * Add testing
 * Add CSV and XML support
 * Implement full text search feature
